@@ -23,19 +23,6 @@ f = open('main.log', 'w')
 f.write("")
 f.close()
 
-def autoclean():
-    while True:
-        sleep(86400)
-        log('Autoclean event kicking in...', 'debug')
-        log('Deleting contents of simple.log')
-        sleep(1)
-        f = open('simple.log', 'w')
-        f.write("")
-        f.close()
-
-        f = open('main.log', 'w')
-        f.write("")
-        f.close()
 
 
 
@@ -96,7 +83,7 @@ async def on_message(message):
     if 'online' in msg:
         log('The message contains the word online, deleting the message...')
         await message.delete()
-        up = getup('5.tcp.eu.ngrok.io', '17138')
+        up = getup('192.168.50.7', '25575')
         if up:
             await message.author.send("<:status:923623332291682375> Server je online prosím neptej se takto. Děkuji ;)")
         if not up:
@@ -106,12 +93,9 @@ async def on_message(message):
 @client.command()
 async def players(ctx):
     log('The command players has been called')
-    players = getplayers('5.tcp.eu.ngrok.io', '17138')
+    players = getplayers('192.168.50.7', '25575')
     await ctx.send(players)
 
-@client.command()
-async def ping(ctx):
-    await ctx.send('pong')
 
 if __name__ == "__main__":
     #x = threading.Thread(target=autoclean)

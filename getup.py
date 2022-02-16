@@ -11,7 +11,7 @@ def getup(ip : str, port : str = '25565'):
         return True
     except:
         return False
-def getplayers(ip : str, port : str = '25565'):
+def getplayers(ip : str, port : str = '25575'):
 
     server = MinecraftServer.lookup(f"{ip}:{port}")
     query = server.query()
