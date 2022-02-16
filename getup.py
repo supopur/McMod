@@ -1,16 +1,16 @@
 from mcstatus import MinecraftServer
 
 
-def getup(ip : str, port : str = '25565'):
+def getup(ip : str, port : str = '25575'):
     
     try:
         server = MinecraftServer.lookup(f"{ip}:{port}")
-        ping = server.ping()
-        status = server.status()
-        print(status)
+        server.query()
         return True
     except:
         return False
+    
+    
 def getplayers(ip : str, port : str = '25575'):
 
     server = MinecraftServer.lookup(f"{ip}:{port}")
@@ -24,7 +24,7 @@ def getplayers(ip : str, port : str = '25575'):
 
 if __name__ == "__main__":
     ip = input("IP: ")
-    port = input("Port 25565: ")
+    port = input("Port 25575: ")
     if port == '':
-        port = "25565"
+        port = "25575"
     main(ip, port)
