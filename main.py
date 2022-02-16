@@ -68,7 +68,7 @@ def log(msg : str, level : str = 'info'):
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="UFO PORNO"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Violku"))
     log('Discord.py is ready')
 
 @client.event
@@ -87,7 +87,7 @@ async def on_message(message):
         if up:
             await message.author.send("<:status:923623332291682375> Server je online prosím neptej se takto. Děkuji ;)")
         if not up:
-            await message.author.send("<:statr:923882871486296074> Server je offline prosím neptej se takto. Děkuji ;)")
+            await message.author.send("<:statr:923882871486296074> Server je offline nejspíše pro údržbu. Podívej se na naší webovou stránku pokud není velká údržba :wrench:: https://nazev.eu  prosím neptej se takto. Děkuji ;)")
     await client.process_commands(message)
 
 @client.command()
@@ -95,6 +95,21 @@ async def players(ctx):
     log('The command players has been called')
     players = getplayers('192.168.50.7', '25575')
     await ctx.send(players)
+
+@client.command()
+async def mc(ctx):
+    log('Sending minecraftServer ip')
+    await ctx.send('Ip minecraft serveru: mc.nazev.eu')
+
+@client.command()
+async def web(ctx):
+    log('Sending website')
+    await ctx.send('Webová stránka: https://nazev.eu')
+
+@client.command()
+async def mods(ctx):
+    log('Sending website/mod-installer url')
+    await ctx.send('Návod jak nainstalovat módy: https://nazev.eu/mod_installer.html')
 
 
 if __name__ == "__main__":
